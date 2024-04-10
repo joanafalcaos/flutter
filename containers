@@ -1,0 +1,127 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  Color _backgroundColor = Colors.blue;
+
+  void _changeColor(Color color) {
+    setState(() {
+      _backgroundColor = color;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Blocos de Containers'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Escolha uma cor'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Azul'),
+              onTap: () {
+                _changeColor(Colors.blue);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Preto'),
+              onTap: () {
+                _changeColor(Colors.black);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Vermelho'),
+              onTap: () {
+                _changeColor(Colors.red);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Marrom'),
+              onTap: () {
+                _changeColor(Colors.brown);
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
+      body: Container(
+        color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: _backgroundColor,
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: _backgroundColor,
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: _backgroundColor,
+                ),
+              ],
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: _backgroundColor,
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: _backgroundColor,
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: _backgroundColor,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
